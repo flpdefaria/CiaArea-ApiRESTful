@@ -28,6 +28,6 @@ public class Voo
 
     public Aeronave Aeronave { get; set; } = null!;
 
-    public Piloto Piloto { get; set; } = null!;
+    public Piloto Piloto { get; set; } = null!
     
 }
