@@ -1,0 +1,6 @@
+@CiaArea_HostAddress = http://localhost:5210
+
+GET {{CiaArea_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
