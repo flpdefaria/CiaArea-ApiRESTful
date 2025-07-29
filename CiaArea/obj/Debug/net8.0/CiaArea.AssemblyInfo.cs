@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CiaArea")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b62efcf894a54a1e6fe3b6af49f996b79902ec5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7fe652f6d158f741755ddc0060af921401561176")]
 [assembly: System.Reflection.AssemblyProductAttribute("CiaArea")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CiaArea")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
