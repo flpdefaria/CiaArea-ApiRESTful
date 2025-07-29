@@ -7,7 +7,6 @@ public class Voo
     {
         Destino = destino;
         Origem = origem;
-        Destino = destino;
         DataHoraChegada = dataHoraChegada;
         DataHoraPartida = dataHoraPartida;
         AeronaveId = aeronaveId;
@@ -17,15 +16,11 @@ public class Voo
     public int Id { get; set; }
     public string Origem { get; set; }
     public string Destino { get; set; }
-
     public DateTime DataHoraPartida { get; set; }
-
     public DateTime DataHoraChegada { get; set; }
-
     public int AeronaveId { get; set; }
-
     public int PilotoId { get; set; }
-
+    
     public Aeronave Aeronave { get; set; } = null!;
 
     public Piloto Piloto { get; set; } = null!;
