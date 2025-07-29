@@ -4,7 +4,7 @@ public class Voo
 {
     public Voo(string origem, string destino, DateTime dataHoraChegada, DateTime dataHoraPartida, int aeronaveId, int pilotoId)
     {
-        Destino = destino;
+        Destino = destino.toUpper();
         Origem = origem;
         DataHoraChegada = dataHoraChegada;
         DataHoraPartida = dataHoraPartida;
