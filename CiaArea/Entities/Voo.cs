@@ -24,4 +24,6 @@ public class Voo
 
     public Piloto Piloto { get; set; } = null!;
 
+    public Cancelamento? Cancelamento { get; set; }
+
 }
