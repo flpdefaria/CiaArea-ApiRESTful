@@ -28,5 +28,15 @@ public class AeronaveService
             aeronave.Codigo
         );
     }
-    
+
+    public IEnumerable<ListarAeronaveViewModel> ListarAeronaves()
+    {
+        return _context.Aeronaves.Select(a => new ListarAeronaveViewModel
+            (
+            a.Id, 
+            a.Modelo, 
+            a.Codigo)
+        );
+    }
+
 }
