@@ -38,5 +38,24 @@ public class AeronaveService
             a.Codigo)
         );
     }
+    
+    public DetalhesAeronaveViewModel? ListarAeronaveId(int id)
+    {
+        var aeronave = _context.Aeronaves.Find(id);
+        
+        
+        if (aeronave != null)
+        {
+            return new DetalhesAeronaveViewModel
+            (
+                aeronave.Id, 
+                aeronave.Fabricante, 
+                aeronave.Modelo, 
+                aeronave.Codigo
+            );
+        }
+        
+        return null;
+    }
 
 }
