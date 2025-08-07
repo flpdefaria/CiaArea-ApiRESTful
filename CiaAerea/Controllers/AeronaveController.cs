@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CiaAerea.Controllers;
 
-// [Route("api/[controller]")]
 [Route("api/aeronaves")]
 [ApiController]
 
@@ -54,6 +53,13 @@ public class AeronaveController : ControllerBase
         var aeronave = _aeronaveService.AtualizarAeronave(dados);
         return Ok(aeronave);
 
+    }
+    
+    [HttpDelete("{id}")] 
+    public IActionResult ExcluirAeronave(int id)
+    {
+        _aeronaveService.ExcluirAeronave(id);
+        return NoContent();
     }
     
 }
