@@ -43,4 +43,17 @@ public class AeronaveController : ControllerBase
         return NotFound();
     }
     
+    [HttpPut("{id}")] 
+    public IActionResult AtualizarAeronave(int id, AtualizarAeronaveViewModel dados)
+    {
+        if (id != dados.Id)
+        {
+            return BadRequest("O id informado na URL não confere com o id informado no corpo da requisição.");
+        }   
+        
+        var aeronave = _aeronaveService.AtualizarAeronave(dados);
+        return Ok(aeronave);
+
+    }
+    
 }
