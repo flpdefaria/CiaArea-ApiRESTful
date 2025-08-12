@@ -20,7 +20,7 @@ public class AeronaveController : ControllerBase
     public IActionResult AdicionarAeronave(AdicionarAeronaveViewModel dados)
     {
         var aeronave = _aeronaveService.AdicionarAeronave(dados);
-        return Ok(aeronave);
+        return CreatedAtAction(nameof(ListarAeronaveId), new { id = aeronave.Id }, aeronave);
     }
     
     [HttpGet]
