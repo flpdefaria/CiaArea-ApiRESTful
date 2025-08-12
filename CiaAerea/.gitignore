@@ -1,0 +1,14 @@
+# Pastas de compilação
+bin/
+obj/
+
+# Arquivos binários e de debug
+*.dll
+*.exe
+*.pdb
+*.mdb
+*.log
+
+# Outros caches do Rider
+.idea/
+*.user
