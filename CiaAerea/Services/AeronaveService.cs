@@ -10,11 +10,13 @@ public class AeronaveService
 {
     private readonly CiaAereaContext _context;
     private readonly AdicionarAeronaveValidator _adicionarAeronaveValidator;
+    private readonly AtualizarAeronaveValidator _atualizarAeronaveValidator;
 
-    public AeronaveService(CiaAereaContext context, AdicionarAeronaveValidator adicionarAeronaveValidator)
+    public AeronaveService(CiaAereaContext context, AdicionarAeronaveValidator adicionarAeronaveValidator, AtualizarAeronaveValidator atualizarAeronaveValidator)
     {
         _context = context;
         _adicionarAeronaveValidator = adicionarAeronaveValidator;
+        _atualizarAeronaveValidator = atualizarAeronaveValidator;
     }
 
     public DetalhesAeronaveViewModel AdicionarAeronave(AdicionarAeronaveViewModel dados)
@@ -65,6 +67,9 @@ public class AeronaveService
 
     public DetalhesAeronaveViewModel? AtualizarAeronave(AtualizarAeronaveViewModel dados)
     {
+        
+        _atualizarAeronaveValidator.ValidateAndThrow(dados);
+        
         var aeronave = _context.Aeronaves.Find(dados.Id);
 
         if (aeronave != null)
