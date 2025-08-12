@@ -9,6 +9,10 @@ obj/
 *.mdb
 *.log
 
+# Arquivos XML gerados no build
+bin/**/*.xml
+obj/**/*.xml
+
 # Outros caches do Rider
 .idea/
 *.user
