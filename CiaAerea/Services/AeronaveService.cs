@@ -11,6 +11,7 @@ public class AeronaveService
     private readonly CiaAereaContext _context;
     private readonly AdicionarAeronaveValidator _adicionarAeronaveValidator;
     private readonly AtualizarAeronaveValidator _atualizarAeronaveValidator;
+    private readonly ExcluirAeronaveValidator _excluirAeronaveValidator;
 
     public AeronaveService(CiaAereaContext context, AdicionarAeronaveValidator adicionarAeronaveValidator, AtualizarAeronaveValidator atualizarAeronaveValidator)
     {
@@ -94,6 +95,8 @@ public class AeronaveService
     
     public void ExcluirAeronave(int id)
     {
+        _excluirAeronaveValidator.ValidateAndThrow(id);
+        
         var aeronave = _context.Aeronaves.Find(id);
         
         if (aeronave != null)
