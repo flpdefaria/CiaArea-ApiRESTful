@@ -40,7 +40,7 @@ public class PilotoService
         );
     }
 
-    public DetalhesPilotoViewModel ListarPilotoId(int id)
+    public DetalhesPilotoViewModel? ListarPilotoId(int id)
     {
         var piloto = _context.Pilotos.Find(id);
         
