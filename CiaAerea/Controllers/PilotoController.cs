@@ -28,4 +28,18 @@ public class PilotoController:ControllerBase
     {
         return Ok(_pilotoService.ListarPilotos());
     }
+
+    [HttpGet("{id}")]
+    public IActionResult ListarPilotoId(int id)
+    {
+        var piloto = _pilotoService.ListarPilotoId(id);
+        
+        if (piloto != null)
+        {
+            return Ok(piloto);
+        }
+        
+        return NotFound();
+    }
+    
 }

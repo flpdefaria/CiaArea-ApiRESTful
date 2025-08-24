@@ -39,4 +39,16 @@ public class PilotoService
             )
         );
     }
+
+    public DetalhesPilotoViewModel ListarPilotoId(int id)
+    {
+        var piloto = _context.Pilotos.Find(id);
+        
+        if (piloto != null)
+        {
+            return new DetalhesPilotoViewModel(piloto.Id, piloto.Nome, piloto.Matricula);
+        }
+        
+        return null;
+    }
 }

@@ -51,7 +51,6 @@ public class AeronaveService
     {
         var aeronave = _context.Aeronaves.Find(id);
         
-        
         if (aeronave != null)
         {
             return new DetalhesAeronaveViewModel
