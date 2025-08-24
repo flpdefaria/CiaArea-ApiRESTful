@@ -14,11 +14,11 @@ public class AdicionarPilotoValidator: AbstractValidator<AdicionarPilotoViewMode
         
         RuleFor(p => p.Nome)
             .NotEmpty().WithMessage("O campo Nome é obrigatório")
-            .MaximumLength(50).WithMessage("O campo Nome deve ter no máximo 50 caracteres");
+            .MaximumLength(100).WithMessage("O campo Nome deve ter no máximo 100 caracteres");
         
         RuleFor(p => p.Matricula)
-            .NotEmpty().WithMessage("O campo Matricula é obrigatório")
-            .MaximumLength(10).WithMessage("O campo Matricula deve ter no máximo 10 caracteres")
-            .Must(matricula => !_context.Pilotos.Any(p => p.Matricula == matricula)).WithMessage("Já existe um piloto com essa matrícula");
+            .NotEmpty().WithMessage("O campo Matrícula é obrigatório")
+            .MaximumLength(10).WithMessage("O campo Matrícula deve ter no máximo 10 caracteres")
+            .Must(matricula => _context.Pilotos.Count(p => p.Matricula == matricula) == 0).WithMessage("Já existe um piloto com essa matrícula");
     }
 }
