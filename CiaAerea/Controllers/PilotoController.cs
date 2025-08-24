@@ -22,4 +22,10 @@ public class PilotoController:ControllerBase
         var piloto = _pilotoService.AdicionarPiloto(dados);
         return Ok(piloto);
     }
+    
+    [HttpGet]
+    public IActionResult ListarPilotos()
+    {
+        return Ok(_pilotoService.ListarPilotos());
+    }
 }
