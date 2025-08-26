@@ -42,4 +42,16 @@ public class PilotoController:ControllerBase
         return NotFound();
     }
     
+    [HttpPut("{id}")]
+    public IActionResult AtualizarPiloto(int id, AtualizarPilotoViewModel dados)
+    {
+        if (id != dados.Id)
+        {
+            return BadRequest("O id informado na URL não confere com o id informado no corpo da requisição.");
+        }   
+        
+        var piloto = _pilotoService.AtualizarPiloto(dados);
+        return Ok(piloto);
+    }
+    
 }
