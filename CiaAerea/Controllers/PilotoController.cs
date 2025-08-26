@@ -54,4 +54,11 @@ public class PilotoController:ControllerBase
         return Ok(piloto);
     }
     
+    [HttpDelete("{id}")]
+    public IActionResult ExcluirPiloto(int id)
+    {
+        _pilotoService.ExcluirPiloto(id);
+        return NoContent();
+    }
+    
 }
