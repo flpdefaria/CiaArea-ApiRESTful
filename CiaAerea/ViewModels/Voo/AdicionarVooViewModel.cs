@@ -4,7 +4,7 @@ namespace CiaAerea.ViewModels.Voo;
 
 public class AdicionarVooViewModel
 {
-    public AdicionarVooViewModel(string origem, string destino, DateTime dataHoraPartida, DateTime dataHoraChegada, int aeronaveId, int pilotoId, Entities.Aeronave aeronave, Piloto piloto, Cancelamento cancelamento)
+    public AdicionarVooViewModel(string origem, string destino, DateTime dataHoraPartida, DateTime dataHoraChegada, int aeronaveId, int pilotoId, Entities.Aeronave aeronave, Entities.Piloto piloto, Cancelamento cancelamento)
     {
         Origem = origem;
         Destino = destino;
@@ -23,8 +23,8 @@ public class AdicionarVooViewModel
     public DateTime DataHoraChegada { get; set; }
     public int AeronaveId { get; set; }
     public int PilotoId { get; set; }
-    public Aeronave Aeronave { get; set; }
-    public Piloto Piloto { get; set; }
+    public Entities.Aeronave Aeronave { get; set; }
+    public Entities.Piloto Piloto { get; set; }
     public Cancelamento Cancelamento { get; set; }
     
 }
