@@ -19,11 +19,8 @@ public class Voo
     public DateTime DataHoraChegada { get; set; }
     public int AeronaveId { get; set; }
     public int PilotoId { get; set; }
-    
     public Aeronave Aeronave { get; set; } = null!;
-
     public Piloto Piloto { get; set; } = null!;
-
     public Cancelamento? Cancelamento { get; set; }
 
 }
