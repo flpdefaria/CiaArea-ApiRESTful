@@ -3,6 +3,7 @@ using CiaAerea.Middlewares;
 using CiaAerea.Services;
 using CiaAerea.Validator.Aeronave;
 using CiaAerea.Validator.Piloto;
+using CiaAerea.Validator.Voo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.AddTransient<ExcluirAeronaveValidator>();
 builder.Services.AddTransient<AdicionarPilotoValidator>();
 builder.Services.AddTransient<AtualizarPilotoValidator>();
 builder.Services.AddTransient<ExcluirPilotoValidator>();
+builder.Services.AddTransient<AdicionarVooValidator>();
 
 var app = builder.Build();
 
