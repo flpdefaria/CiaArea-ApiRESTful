@@ -1,11 +1,10 @@
-using CiaAerea.Entities;
-
 namespace CiaAerea.ViewModels.Voo;
 
-public class AdicionarVooViewModel
+public class AtualizarVooViewModel
 {
-    public AdicionarVooViewModel(string origem, string destino, DateTime dataHoraPartida, DateTime dataHoraChegada, int aeronaveId, int pilotoId)
+    public AtualizarVooViewModel(string origem, string destino, DateTime dataHoraPartida, DateTime dataHoraChegada, int aeronaveId, int pilotoId, int id)
     {
+        Id = id;
         Origem = origem;
         Destino = destino;
         DataHoraPartida = dataHoraPartida;
@@ -14,11 +13,11 @@ public class AdicionarVooViewModel
         PilotoId = pilotoId;
     }
 
+    public int Id { get; set; }
     public string Origem { get; set; }
     public string Destino { get; set; }
     public DateTime DataHoraPartida { get; set; }
     public DateTime DataHoraChegada { get; set; }
     public int AeronaveId { get; set; }
     public int PilotoId { get; set; }
-    
 }
