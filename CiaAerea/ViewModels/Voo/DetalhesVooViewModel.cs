@@ -5,7 +5,7 @@ namespace CiaAerea.ViewModels.Voo;
 
 public class DetalhesVooViewModel
 {
-    public DetalhesVooViewModel(int id, string origem, string destino, DateTime dataHoraPartida, DateTime dataHoraChegada, int aeronaveId, int pilotoId, DetalhesAeronaveViewModel? aeronave, DetalhesPilotoViewModel? piloto)
+    public DetalhesVooViewModel(int id, string origem, string destino, DateTime dataHoraPartida, DateTime dataHoraChegada, int aeronaveId, int pilotoId)
     {
         Id = id;
         Origem = origem;
@@ -14,8 +14,6 @@ public class DetalhesVooViewModel
         DataHoraChegada = dataHoraChegada;
         AeronaveId = aeronaveId;
         PilotoId = pilotoId;
-        Aeronave = aeronave;
-        Piloto = piloto;
     }
 
     public int Id { get; set; }
@@ -25,6 +23,8 @@ public class DetalhesVooViewModel
     public DateTime DataHoraChegada { get; set; }
     public int AeronaveId { get; set; }
     public int PilotoId { get; set; }
+    
     public DetalhesAeronaveViewModel? Aeronave { get; set; }
+    
     public DetalhesPilotoViewModel? Piloto { get; set; }
 }
