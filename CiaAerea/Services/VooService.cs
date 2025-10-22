@@ -44,15 +44,24 @@ public class VooService
             );
     }
     
-    public IEnumerable<ListarVooViewModel> ListarVoos()
+    public IEnumerable<ListarVooViewModel> ListarVoos(string? origem, string? destino, DateTime? partida, DateTime? chegada)
     {
+        var filtroOrigem = (Voo voo) => string.IsNullOrEmpty(origem) || voo.Origem == origem;
+        var filtroDestino = (Voo voo) => string.IsNullOrEmpty(destino) || voo.Destino == destino;
+        var filtroPartida = (Voo voo) => !partida.HasValue || voo.DataHoraPartida >= partida;
+        var filtroChegada = (Voo voo) => !chegada.HasValue || voo.DataHoraChegada <= chegada;
+        
         return _context.Voos
+            .Where(filtroOrigem)
+            .Where(filtroDestino)
+            .Where(filtroPartida)
+            .Where(filtroChegada)
             .Select(v => new ListarVooViewModel(
-                v.Id, 
-                v.Origem, 
-                v.Destino, 
-                v.DataHoraPartida, 
-                v.DataHoraChegada
-                ));
+            v.Id, 
+            v.Origem, 
+            v.Destino, 
+            v.DataHoraPartida, 
+            v.DataHoraChegada
+        ));
     }
 }

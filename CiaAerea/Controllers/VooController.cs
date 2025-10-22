@@ -24,9 +24,9 @@ namespace CiaAerea.Controllers;
         }
 
         [HttpGet]
-        public IActionResult ListarVoos()
+        public IActionResult ListarVoos(string? origem, string? destino, DateTime? partida, DateTime? chegada)
         {
-            return Ok(_vooService.ListarVoos());
+            return Ok(_vooService.ListarVoos(origem, destino, partida, chegada));
         }
     }
     
