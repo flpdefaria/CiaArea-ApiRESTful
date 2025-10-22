@@ -28,5 +28,18 @@ namespace CiaAerea.Controllers;
         {
             return Ok(_vooService.ListarVoos(origem, destino, partida, chegada));
         }
+        
+        [HttpGet("{id}")]
+        public IActionResult ListarVooPeloId(int id)
+        {
+            var voo = _vooService.ListarVooPeloId(id);
+            
+            if (voo != null)
+            {
+                return Ok(voo);
+            }
+            
+            return NotFound();
+        }
     }
     
