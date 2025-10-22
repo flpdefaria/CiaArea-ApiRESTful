@@ -22,5 +22,11 @@ namespace CiaAerea.Controllers;
             var voo = _vooService.AdicionarVoo(dados);
             return Ok(voo);
         }
+
+        [HttpGet]
+        public IActionResult ListarVoos()
+        {
+            return Ok(_vooService.ListarVoos());
+        }
     }
     
