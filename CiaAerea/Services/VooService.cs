@@ -36,15 +36,7 @@ public class VooService
         _context.Add(voo);
         _context.SaveChanges();
         
-        return new DetalhesVooViewModel(
-            voo.Id, 
-            voo.Origem, 
-            voo.Destino, 
-            voo.DataHoraPartida, 
-            voo.DataHoraChegada, 
-            voo.AeronaveId, 
-            voo.PilotoId
-            );
+        return ListarVooPeloId(voo.Id)!;
     }
     
     public IEnumerable<ListarVooViewModel> ListarVoos(string? origem, string? destino, DateTime? partida, DateTime? chegada)
