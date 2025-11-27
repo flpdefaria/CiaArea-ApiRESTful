@@ -41,5 +41,23 @@ namespace CiaAerea.Controllers;
             
             return NotFound();
         }
+        
+        [HttpPut("{id}")]
+        public IActionResult AtualizarVoo(int id, AtualizarVooViewModel dados)
+        {
+            if (id != dados.Id)
+            {
+                return BadRequest("O id informado na URL difere do id informado no corpo da requisição");
+            }
+            
+            var voo = _vooService.AtualizarVoo(dados);
+            
+            if (voo != null)
+            {
+                return Ok(voo);
+            }
+            
+            return NotFound();
+        }
     }
     
