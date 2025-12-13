@@ -1,4 +1,5 @@
 using CiaAerea.Services;
+using CiaAerea.ViewModels.Cancelamento;
 using CiaAerea.ViewModels.Voo;
 using Microsoft.AspNetCore.Mvc;
 
@@ -64,6 +65,14 @@ namespace CiaAerea.Controllers;
         {
             _vooService.ExcluirVoo(id);
             return NoContent();
+        }
+        
+        [HttpPost("cancelar")]
+        public IActionResult CancelarVoo(CancelarVooViewModel dados)
+        {
+            var vooCancelado = _vooService.CancelarVoo(dados);
+
+                return Ok(vooCancelado);
         }
     }
     

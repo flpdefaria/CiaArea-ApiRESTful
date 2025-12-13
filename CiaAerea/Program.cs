@@ -2,6 +2,7 @@ using CiaAerea.Contexts;
 using CiaAerea.Middlewares;
 using CiaAerea.Services;
 using CiaAerea.Validator.Aeronave;
+using CiaAerea.Validator.Cancelamento;
 using CiaAerea.Validator.Piloto;
 using CiaAerea.Validator.Voo;
 
@@ -26,6 +27,7 @@ builder.Services.AddTransient<ExcluirPilotoValidator>();
 builder.Services.AddTransient<AdicionarVooValidator>();
 builder.Services.AddTransient<AtualizarVooValidator>();
 builder.Services.AddTransient<ExcluirVooValidator>();
+builder.Services.AddTransient<CancelarVooValidator>();
 
 var app = builder.Build();
 
