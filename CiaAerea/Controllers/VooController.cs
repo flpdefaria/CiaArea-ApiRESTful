@@ -59,5 +59,11 @@ namespace CiaAerea.Controllers;
             
             return NotFound();
         }
+        [HttpDelete("{id}")]
+        public IActionResult ExcluirVoo(int id)
+        {
+            _vooService.ExcluirVoo(id);
+            return NoContent();
+        }
     }
     

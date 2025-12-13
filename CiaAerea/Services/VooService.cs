@@ -14,6 +14,7 @@ public class VooService
     private readonly CiaAereaContext _context;
     private readonly AdicionarVooValidator _adicionarVooValidator;
     private readonly AtualizarVooValidator _atualizarVooValidator;
+    private readonly ExcluirVooValidator _excluirVooValidator;
 
     public VooService(CiaAereaContext context, AdicionarVooValidator adicionarVooValidator, AtualizarVooValidator atualizarVooValidator)
     {
@@ -121,5 +122,18 @@ public class VooService
             return ListarVooPeloId(voo.Id)!;
         }
         return null;
+    }
+
+    public void ExcluirVoo(int id)
+    {
+        _excluirVooValidator.ValidateAndThrow(id);
+        
+        var voo = _context.Voos.Find(id);
+        
+        if (voo != null)
+        {
+            _context.Remove(voo);
+            _context.SaveChanges();
+        }
     }
 }
