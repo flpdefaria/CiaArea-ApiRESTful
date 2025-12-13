@@ -1,17 +1,17 @@
-namespace CiaAerea.Entities;
+namespace CiaAerea.ViewModels.Cancelamento;
 
-public class Cancelamento
+public class DetalhesCancelamentoViewModel
 {
-    public Cancelamento(string motivo, DateTime dataHoraNotificacao, int vooId)
+    public DetalhesCancelamentoViewModel(int id, DateTime dataHoraNotificacao, string motivo, int vooId)
     {
-        Motivo = motivo;
+        Id = id;
         DataHoraNotificacao = dataHoraNotificacao;
+        Motivo = motivo;
         VooId = vooId;
     }
-    
+
     public int Id { get; set; }
     public string Motivo { get; set; }
     public DateTime DataHoraNotificacao { get; set; }
     public int VooId { get; set; }
-    public Voo Voo { get; set; } = null!;
 }
