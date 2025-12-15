@@ -1,4 +1,5 @@
 using CiaAerea.ViewModels.Aeronave;
+using CiaAerea.ViewModels.Cancelamento;
 using CiaAerea.ViewModels.Piloto;
 
 namespace CiaAerea.ViewModels.Voo;
@@ -23,8 +24,7 @@ public class DetalhesVooViewModel
     public DateTime DataHoraChegada { get; set; }
     public int AeronaveId { get; set; }
     public int PilotoId { get; set; }
-    
     public DetalhesAeronaveViewModel? Aeronave { get; set; }
-    
     public DetalhesPilotoViewModel? Piloto { get; set; }
+    public DetalhesCancelamentoViewModel? Cancelamento { get; set; }
 }
