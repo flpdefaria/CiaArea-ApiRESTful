@@ -10,7 +10,6 @@ using CiaAerea.ViewModels.Voo;
 using DinkToPdf;
 using DinkToPdf.Contracts;
 using FluentValidation;
-using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.EntityFrameworkCore;
 
 namespace CiaAerea.Services;
@@ -24,13 +23,14 @@ public class VooService
     private readonly CancelarVooValidator _cancelarVooValidator;
     private readonly IConverter _converter;
 
-    public VooService(CiaAereaContext context, AdicionarVooValidator adicionarVooValidator, AtualizarVooValidator atualizarVooValidator, CancelarVooValidator cancelarVooValidator, IConverter converter)
+    public VooService(CiaAereaContext context, AdicionarVooValidator adicionarVooValidator, AtualizarVooValidator atualizarVooValidator, CancelarVooValidator cancelarVooValidator, IConverter converter, ExcluirVooValidator excluirVooValidator)
     {
         _context = context;
         _adicionarVooValidator = adicionarVooValidator;
         _atualizarVooValidator = atualizarVooValidator;
         _cancelarVooValidator = cancelarVooValidator;
         _converter = converter;
+        _excluirVooValidator = excluirVooValidator;
     }
 
     public DetalhesVooViewModel AdicionarVoo(AdicionarVooViewModel dados)
@@ -187,9 +187,9 @@ public class VooService
                     .Append($"<p><b>ORIGEM:</b> {voo.Origem}</p>")
                     .Append($"<p><b>DESTINO:</b> {voo.Destino}</p>")
                     .Append($"<hr>")
-                    .Append($"<p><b>AERONAVE:</b> {voo.Aeronave!.Codigo}</p>")
+                    .Append($"<p><b>AERONAVE:</b> {voo.Aeronave.Codigo}</p>")
                     .Append($"<hr>")
-                    .Append($"<p><b>PILOTO:</b> {voo.Piloto!.Nome}</p>")
+                    .Append($"<p><b>PILOTO:</b> {voo.Piloto.Nome}</p>")
                     .Append($"<hr>");
                 if (voo.Cancelamento != null)
                 {
