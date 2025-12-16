@@ -74,5 +74,18 @@ namespace CiaAerea.Controllers;
 
                 return Ok(vooCancelado);
         }
+
+        [HttpGet("{id}/ficha")]
+        public IActionResult GerarFichaDoVoo(int id)
+        {
+            var conteudo = _vooService.GerarFichaDoVoo(id);
+            
+            if(conteudo != null){
+                return File(conteudo!, "application/pdf");
+            }
+
+            return NotFound();
+        }
+        
     }
     

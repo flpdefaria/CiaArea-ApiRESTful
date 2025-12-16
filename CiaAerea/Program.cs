@@ -5,6 +5,8 @@ using CiaAerea.Validator.Aeronave;
 using CiaAerea.Validator.Cancelamento;
 using CiaAerea.Validator.Piloto;
 using CiaAerea.Validator.Voo;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,7 @@ builder.Services.AddTransient<AdicionarVooValidator>();
 builder.Services.AddTransient<AtualizarVooValidator>();
 builder.Services.AddTransient<ExcluirVooValidator>();
 builder.Services.AddTransient<CancelarVooValidator>();
+builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
 var app = builder.Build();
 

@@ -1,3 +1,4 @@
+using System.Text;
 using CiaAerea.Contexts;
 using CiaAerea.Entities;
 using CiaAerea.Validator.Cancelamento;
@@ -6,7 +7,10 @@ using CiaAerea.ViewModels.Aeronave;
 using CiaAerea.ViewModels.Cancelamento;
 using CiaAerea.ViewModels.Piloto;
 using CiaAerea.ViewModels.Voo;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 using FluentValidation;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.EntityFrameworkCore;
 
 namespace CiaAerea.Services;
@@ -18,13 +22,15 @@ public class VooService
     private readonly AtualizarVooValidator _atualizarVooValidator;
     private readonly ExcluirVooValidator _excluirVooValidator;
     private readonly CancelarVooValidator _cancelarVooValidator;
+    private readonly IConverter _converter;
 
-    public VooService(CiaAereaContext context, AdicionarVooValidator adicionarVooValidator, AtualizarVooValidator atualizarVooValidator, CancelarVooValidator cancelarVooValidator)
+    public VooService(CiaAereaContext context, AdicionarVooValidator adicionarVooValidator, AtualizarVooValidator atualizarVooValidator, CancelarVooValidator cancelarVooValidator, IConverter converter)
     {
         _context = context;
         _adicionarVooValidator = adicionarVooValidator;
         _atualizarVooValidator = atualizarVooValidator;
         _cancelarVooValidator = cancelarVooValidator;
+        _converter = converter;
     }
 
     public DetalhesVooViewModel AdicionarVoo(AdicionarVooViewModel dados)
@@ -162,5 +168,56 @@ public class VooService
         _context.SaveChanges();
         
         return ListarVooPeloId(dados.VooId)!;
+    }
+
+    public byte[]? GerarFichaDoVoo(int id)
+    {
+        var voo = _context.Voos
+            .Include(v => v.Aeronave)
+            .Include(v => v.Piloto)
+            .Include(v => v.Cancelamento)
+            .FirstOrDefault(v => v.Id == id);
+
+        if (voo != null)
+        {
+            var builder = new StringBuilder();
+            
+            builder.Append($"<h1 style='text-align: center;'>Ficha do Voo</h1>")
+                    .Append($"<hr>")
+                    .Append($"<p><b>ORIGEM:</b> {voo.Origem}</p>")
+                    .Append($"<p><b>DESTINO:</b> {voo.Destino}</p>")
+                    .Append($"<hr>")
+                    .Append($"<p><b>AERONAVE:</b> {voo.Aeronave!.Codigo}</p>")
+                    .Append($"<hr>")
+                    .Append($"<p><b>PILOTO:</b> {voo.Piloto!.Nome}</p>")
+                    .Append($"<hr>");
+                if (voo.Cancelamento != null)
+                {
+                    builder.Append($"<p style='color: red'><b>VOO CANCELADO</b> {voo.Cancelamento.Motivo}</p>");
+                }
+
+                var doc = new HtmlToPdfDocument()
+                {
+                    GlobalSettings =
+                    {
+                        ColorMode = ColorMode.Color,
+                        Orientation = Orientation.Portrait,
+                        PaperSize = PaperKind.A4
+                    },
+                    Objects =
+                    {
+                        new ObjectSettings()
+                        {
+                            PagesCount = true,
+                            HtmlContent = builder.ToString(),
+                            WebSettings = { DefaultEncoding = "UTF-8" }
+                        }
+                    }
+                };
+                
+                return _converter.Convert(doc);
+        }
+
+        return null;
     }
 }
