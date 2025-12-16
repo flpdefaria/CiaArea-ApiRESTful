@@ -182,15 +182,15 @@ public class VooService
         {
             var builder = new StringBuilder();
             
-            builder.Append($"<h1 style='text-align: center;'>Ficha do Voo</h1>")
-                    .Append($"<hr>")
-                    .Append($"<p><b>ORIGEM:</b> {voo.Origem}</p>")
-                    .Append($"<p><b>DESTINO:</b> {voo.Destino}</p>")
-                    .Append($"<hr>")
-                    .Append($"<p><b>AERONAVE:</b> {voo.Aeronave.Codigo}</p>")
-                    .Append($"<hr>")
-                    .Append($"<p><b>PILOTO:</b> {voo.Piloto.Nome}</p>")
-                    .Append($"<hr>");
+            builder.Append($"<h1 style='text-align: center'>Ficha do Voo { voo.Id.ToString().PadLeft(10, '0') }</h1>")
+                .Append($"<hr>")
+                .Append($"<p><b>ORIGEM:</b> { voo.Origem } (saída em { voo.DataHoraPartida:dd/MM/yyyy} às { voo.DataHoraPartida:hh:mm})</p>")
+                .Append($"<p><b>DESTINO:</b> { voo.Destino} (chegada em { voo.DataHoraChegada:dd/MM/yyyy} às { voo.DataHoraChegada:hh:mm})</p>")
+                .Append($"<hr>")
+                .Append($"<p><b>AERONAVE:</b> { voo.Aeronave!.Codigo } ({ voo.Aeronave.Fabricante } { voo.Aeronave.Modelo })</p>")
+                .Append($"<hr>")
+                .Append($"<p><b>PILOTO:</b> { voo.Piloto!.Nome } ({ voo.Piloto.Matricula})</p>")
+                .Append($"<hr>");
                 if (voo.Cancelamento != null)
                 {
                     builder.Append($"<p style='color: red'><b>VOO CANCELADO</b> {voo.Cancelamento.Motivo}</p>");
